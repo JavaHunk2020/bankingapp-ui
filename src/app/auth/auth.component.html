@@ -1,0 +1,23 @@
+<div class="container">
+    <img src="https://www.iconpacks.net/icons/1/free-user-login-icon-305-thumb.png" class="img-thumbnail" style="height: 220px;">
+    <img src="https://www.iconpacks.net/icons/1/free-user-login-icon-305-thumb.png" class="img-thumbnail" style="height: 220px;">
+    <img src="https://www.iconpacks.net/icons/1/free-user-login-icon-305-thumb.png" class="img-thumbnail" style="height: 220px;">
+    <hr/>
+    <span style="color:red;font-size: 20px;font-weight: bold;">
+      {{message}}</span>
+    <br>
+    <hr/>
+    <form action="auth" method="post">
+        <div style="width: 50%;">
+              
+              <label>Username</label>
+              <input #username (focus)="clearText()" type="text" name="username" class="form-control">
+              <label>Password</label>
+              <input #password (focus)="clearText()" type="password" name="password" class="form-control">
+              <hr/> 
+              <button type="button" (click)="processLogin(username,password);"  class="btn btn-primary space5px">Login</button>
+              <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+    </form>
+    
+</div>
