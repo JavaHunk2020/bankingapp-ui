@@ -16,7 +16,10 @@
               <input #password (focus)="clearText()" type="password" name="password" class="form-control">
               <hr/> 
               <button type="button" (click)="processLogin(username,password);"  class="btn btn-primary space5px">Login</button>
-              <button type="reset" class="btn btn-danger">Reset</button>
+              <button type="reset" class="btn btn-danger space5px">Reset</button>
+              <a href="#" [routerLink]="'/signup'">
+              <button type="button" class="btn btn-warning">Signup</button>
+            </a>
     </div>
     </form>
     
