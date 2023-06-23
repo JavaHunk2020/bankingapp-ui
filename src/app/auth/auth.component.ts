@@ -33,7 +33,9 @@ export class AuthComponent implements OnInit {
      this.httpClient.post(uri,payload);
 
      result.subscribe(data=>{
-        if(data.code==='success'){
+        if(data.code==='success') {
+          //After succesful signup
+          localStorage.setItem('loggedUser',tusername);
           this.router.navigate(['dashboard']);
         }
         else{

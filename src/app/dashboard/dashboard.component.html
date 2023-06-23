@@ -3,6 +3,15 @@
      <img style="height: 60px;" src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-project-management-Meaning-and-Definition-of-Project-Management-1.jpg">
       <img style="height: 60px;" src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-project-management-Meaning-and-Definition-of-Project-Management-1.jpg">
        <img style="height: 60px;" src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-project-management-Meaning-and-Definition-of-Project-Management-1.jpg">
+
+         
+       <span style="float: right;font-weight: bold;">
+         Hello {{username}}
+         <a href="#" (click)="logout();">
+         <img src="assets/logout.png" alt="aa">
+         </a>
+        </span>
+
      <hr/>
        <h3>Selected Passport Details  :-</h3>
            <table class="table table-bordered">
@@ -52,25 +61,26 @@
  </thead>
  <tbody>
 
-   <tr>
-   <td></td>
-     <td>
-     </td>
-    <td></td>
-   <td></td>
-   <td><img src="" style="height: 80px;"></td>
+   <tr *ngFor="let signup of signups;index as sno">
+   <td>{{sno+1}}</td>
+   <td>{{signup.name}}</td>
+   <td>{{signup.email}}</td>
+   <td>{{signup.gender}}</td>
+   <td><img src="{{signup.photo}}" style="height: 80px;"></td>
      <td>
        <a href="#">
            <button type="button" class="btn btn-danger">DELETE</button>
        </a>
        &nbsp;
-       <a href="#">
+
+       <a href="#" *ngIf="signup.passportFlag==='no'">
            <button type="button" class="btn btn-primary">Passport</button>
        </a>
         &nbsp;
-       <a href="#">
-           <button type="button" class="btn btn-success">More!</button>
-       </a>
+        <a href="#" *ngIf="signup.passportFlag==='yes'">
+              <button type="button" class="btn btn-success">More!</button>
+          </a>
+        
        </td>
    </tr>
 
