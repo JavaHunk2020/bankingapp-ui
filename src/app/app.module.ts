@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
+import { PassportComponent } from './passport/passport.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SignupComponent } from './signup/signup.component';
     HeaderComponent,
     AuthComponent,
     DashboardComponent,
-    SignupComponent
+    SignupComponent,
+    PassportComponent
   ],
   imports: [
     BrowserModule,

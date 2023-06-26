@@ -1,0 +1,31 @@
+<h3>Selected Passport Details  :-</h3>
+           <table class="table table-bordered">
+ <thead>
+   <tr style="background-color: #35858b;color:white;">
+      <th>Name</th>
+     <th>Number</th>
+     <th>Address</th>
+     <th>Date of expiry</th>
+     <th>Photo</th>
+      <th>Delete</th>
+   </tr>
+ </thead>
+ <tbody>
+   <tr>
+     <td>{{cpassport.name}}</td>
+     <td>{{cpassport.number}}</td>
+     <td>{{cpassport.address}}</td>
+                 <td>
+                 <b><td>{{cpassport.exp | date: 'dd-MMM-yyyy hh:mm a'}}</td></b>
+                 </td>
+                       <td><img src="{{cpassport.photo}}" style="height: 40px;"></td>
+                          <td>
+                          <button type="button" class="btn btn-danger">Delete</button>
+                          <button type="button" class="btn btn-primary">EDIT</button>
+                          </td>
+             </tr>		
+ </tbody>
+ </table>
+    
+
+     <hr/>
