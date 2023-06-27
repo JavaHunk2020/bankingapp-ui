@@ -1,3 +1,5 @@
+
+<div [hidden]="cpassport.name===undefined" >
 <h3>Selected Passport Details  :-</h3>
            <table class="table table-bordered">
  <thead>
@@ -20,7 +22,8 @@
                  </td>
                        <td><img src="{{cpassport.photo}}" style="height: 40px;"></td>
                           <td>
-                          <button type="button" class="btn btn-danger">Delete</button>
+                          <button (click)="deletePassport(cpassport.id)"  type="button" class="btn btn-danger">Delete</button>
+                           &nbsp;&nbsp;
                           <button type="button" class="btn btn-primary">EDIT</button>
                           </td>
              </tr>		
@@ -29,3 +32,4 @@
     
 
      <hr/>
+    </div>

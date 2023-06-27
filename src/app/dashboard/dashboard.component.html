@@ -17,7 +17,9 @@
          this is cpassport is child propery
 
       --> 
-     <app-passport [passport]="passportDetails"></app-passport>
+     <app-passport [passport]="passportDetails" #dpassport>
+
+     </app-passport>
 
 
       <h3 style="background-color: #ffffe2;">Signup Data with Passport!</h3>
@@ -49,7 +51,7 @@
        </a>
        &nbsp;
 
-       <a href="#" *ngIf="signup.passportFlag==='no'">
+       <a routerLink="/addPassport" [queryParams]="{name:signup.name,email:signup.email}"  *ngIf="signup.passportFlag==='no'">
            <button type="button" class="btn btn-primary">Passport</button>
        </a>
         &nbsp;
