@@ -12,6 +12,7 @@ import { PassportComponent } from './passport/passport.component';
 import { AddPassportComponent } from './add-passport/add-passport.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { FormsModule } from '@angular/forms';
+import { CreditComponent } from './credit/credit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     SignupComponent,
     PassportComponent,
-    AddPassportComponent
+    AddPassportComponent,
+    CreditComponent
   ],
   imports: [
     BrowserModule,

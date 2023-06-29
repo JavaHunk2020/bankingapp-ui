@@ -33,6 +33,10 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
     
   }
 
+  applyCreditCard(signup:Signup){
+    this.router.navigate(['applyCreditCard'],{"queryParams":{name:signup.name,email:signup.email,sid:signup.sid}});
+  }
+
   ngAfterViewChecked(): void {
     //throw new Error('Method not implemented.');
     console.log("ngAfterViewChecked!!");
