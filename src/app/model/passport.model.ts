@@ -1,7 +1,7 @@
 export interface Passport {
     id:number;
     number:string;
-    exp:Date;
+    exp:string;
     email:string,
     photo:string;
     name:string;

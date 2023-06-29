@@ -5,6 +5,7 @@ import { Constant } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { Passport } from '../model/passport.model';
 import { SharedService } from '../shared.service';
+import { PassportComponent } from '../passport/passport.component';
 
 
 @Component({
@@ -18,22 +19,29 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
 
    passportDetails:Passport={} as Passport;
 
-   @ViewChild("dpassport") 
-   dpassport:ElementRef<any>={} as ElementRef<any>;
+   @ViewChild("header") 
+   header:ElementRef={} as ElementRef;
+
+   @ViewChild(PassportComponent) 
+   dpassport:PassportComponent={} as PassportComponent;
 
   constructor(private http:HttpClient,private router:Router,private sharedService:SharedService) { }
 
   ngAfterViewInit(): void {
     //throw new Error('Method not implemented.');
     console.log("ngAfterViewInit!!");
-    console.log(this.dpassport.nativeElement);
+    
   }
 
   ngAfterViewChecked(): void {
     //throw new Error('Method not implemented.');
     console.log("ngAfterViewChecked!!");
-    console.log(this.dpassport.nativeElement);
-  }
+    console.log(this.header);
+    this.header.nativeElement.innerHTML="Passport Super Details!";
+    this.header.nativeElement.style.color="#004eff";
+    console.log(this.dpassport);
+    console.log(this.dpassport['cpassport']);
+    }
 
 
   logout():void {

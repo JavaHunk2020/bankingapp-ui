@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Passport } from '../model/passport.model';
+import { HttpClient } from '@angular/common/http';
+import { Constant } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+
+interface Magic {
+  name:string;
+  email:string;
+  age?:number;
+}
+
+
 
 @Component({
   selector: 'app-add-passport',
@@ -10,8 +21,9 @@ import { Passport } from '../model/passport.model';
 export class AddPassportComponent implements OnInit {
   message:string="";
   passport:Passport={} as Passport;
-  constructor(private activatedRoute:ActivatedRoute) { }
-  
+  constructor(private router:Router,private activatedRoute:ActivatedRoute,private http:HttpClient) { }
+   
+   magic:Magic={name:'Nagen',email:'nk@gmail.com',age:12}; 
 
   ngOnInit(): void {
     ///name=Mohit%20Kumar&email=mohit@gmail.com
@@ -27,6 +39,15 @@ export class AddPassportComponent implements OnInit {
         this.passport.email= params['email']??'';
     });
 
+  }
+
+  public savePassport() : void {
+      console.log(this.passport);
+     let  result:Observable<any> = 
+     this.http.post(`${Constant.BASE_URI}/passports`,this.passport);
+      result.subscribe(data=>{
+         this.router.navigate(['/dashboard']);
+     });
   }
 
 }

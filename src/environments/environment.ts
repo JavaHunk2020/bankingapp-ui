@@ -7,7 +7,8 @@ export const environment = {
 };
 
 export const Constant = {
-  BASE_URI:'http://localhost:9999/v1'
+  BASE_URI:'http://localhost:9999/v1',
+  BASE_URI_CREDIT_CARD:'http://localhost:8888/v1'
 } 
 
 /*

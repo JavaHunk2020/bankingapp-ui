@@ -22,7 +22,7 @@
      </app-passport>
 
 
-      <h3 style="background-color: #ffffe2;">Signup Data with Passport!</h3>
+      <h3 #header style="background-color: #ffffe2;">Signup Data with Passport!</h3>
       <hr/>
        <b>Total Records</b> :  <span style="font-weight: bold;font-size: 16px;"> 
       </span>
@@ -34,6 +34,7 @@
      <th>Email</th>
      <th>Gender</th>
      <th>Photo</th>
+     <th>Card</th>
        <th>Action</th>
    </tr>
  </thead>
@@ -44,19 +45,25 @@
    <td>{{signup.name}}</td>
    <td>{{signup.email}}</td>
    <td>{{signup.gender}}</td>
+     
    <td><img src="{{signup.photo}}" style="height: 80px;"></td>
+   <td><img src="data:image/png;base64,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" 
+              style="height:50px;"></td>
      <td>
        <a href="#">
            <button type="button" class="btn btn-danger">DELETE</button>
        </a>
        &nbsp;
 
-       <a routerLink="/addPassport" [queryParams]="{name:signup.name,email:signup.email}"  *ngIf="signup.passportFlag==='no'">
+       <a [routerLink]="['/addPassport']" [queryParams]="{name:signup.name,email:signup.email}"  *ngIf="signup.passportFlag==='no'">
            <button type="button" class="btn btn-primary">Passport</button>
        </a>
         &nbsp;
-              <button *ngIf="signup.passportFlag==='yes'" 
+          <button *ngIf="signup.passportFlag==='yes'" 
               (click)="showPassportDetails(signup.sid);"  type="button" class="btn btn-success">More!</button>
+              &nbsp;
+            
+              
         
        </td>
    </tr>

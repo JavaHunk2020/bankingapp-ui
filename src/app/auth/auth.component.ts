@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,10 +13,15 @@ export class AuthComponent implements OnInit {
   message:string="";
   
   //Dependency injection in angular ? yes
-  constructor(private router:Router,private  httpClient : HttpClient) { 
+  constructor(private router:Router,private  httpClient : HttpClient,private sharedService:SharedService) { 
   }
 
   ngOnInit(): void {
+    this.sharedService.getData().subscribe(data=>{
+        if(data==='down'){
+           this.message="It seems like server rest api is down!!!!!!!!!!"; 
+        }
+    });
   }
 
   processLogin(username: HTMLInputElement,password: HTMLInputElement) {
