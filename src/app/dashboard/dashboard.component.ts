@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Passport } from '../model/passport.model';
 import { SharedService } from '../shared.service';
 import { PassportComponent } from '../passport/passport.component';
+import { UserAuthService } from '../services/user.auth.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
    @ViewChild(PassportComponent) 
    dpassport:PassportComponent={} as PassportComponent;
 
-  constructor(private http:HttpClient,private router:Router,private sharedService:SharedService) { }
+  constructor(private userAuthService:UserAuthService,private http:HttpClient,private router:Router,private sharedService:SharedService) { }
 
   ngAfterViewInit(): void {
     //throw new Error('Method not implemented.');
@@ -56,7 +57,7 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
   ngOnInit(): void {
     console.log("ng oninit method is called");
     //null coalescing
-    this.username = localStorage.getItem('loggedUser')??'';
+    this.username = this.userAuthService.getEmail();
   
     this.sharedService.getData().subscribe(input=>{
           if(input==='refreshIt') {
@@ -67,7 +68,9 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
   }
 
   fetch():void {
-     this.http.get<Signup[]>(`${Constant.BASE_URI}/signups`).subscribe((data:Signup[])=>{
+    let urole = this.userAuthService.getRole();
+    let email = this.userAuthService.getEmail();
+     this.http.get<Signup[]>(`${Constant.BASE_URI}/signups`,{params:{role:urole,email:email}}).subscribe((data:Signup[])=>{
            this.signups=data;
 }    );
   }
