@@ -7,6 +7,7 @@ import { Passport } from '../model/passport.model';
 import { SharedService } from '../shared.service';
 import { PassportComponent } from '../passport/passport.component';
 import { UserAuthService } from '../services/user.auth.service';
+import { CreditCard } from '../model/credit.card';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
 
    @ViewChild(PassportComponent) 
    dpassport:PassportComponent={} as PassportComponent;
-
+  
   constructor(private userAuthService:UserAuthService,private http:HttpClient,private router:Router,private sharedService:SharedService) { }
 
   ngAfterViewInit(): void {
@@ -81,6 +82,13 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
        this.passportDetails=data;
     });
 
+  }
+
+  public creditCardDetails(signup:Signup): void {
+    localStorage.setItem('username',signup.name);
+      this.router.navigate(['approveRejectCreditCard',signup.email]);
+     
+    //});
   }
 
 }

@@ -60,7 +60,7 @@
    	 
    	 <div style="width: 40%;margin-bottom: 15px;" class="form-group">
    	 <label>Limit: </label>
-   	<select [(ngModel)]="creditCard.limit"  name="limit" class="form-control">
+   	<select [(ngModel)]="creditCard.climit"  name="limit" class="form-control">
    		     <option>1000$</option>
    		     <option>2000$</option>
    		     <option>3000$</option>
@@ -69,11 +69,22 @@
    		 </select>
    	 </div>
    	 
-   	 	 <div style="width: 50%;margin-top: 20px;">
+	 <hr/>
+   	 	
+	 
+	 <div style="width: 50%;margin-top: 20px;" [hidden]="!applyCard">
    	 <button (click) = "applyCreditCard();"  type="button" class="btn btn-primary">Apply For Card</button>
       &nbsp;
    	  <button type="reset" class="btn btn-danger">Clear</button>
    	 </div>
+
+		<div style="width: 50%;margin-top: 20px;" [hidden]="applyCard">
+			<button (click) = "updateCreditCardStatus('Approve');"  type="button" class="btn btn-success">Approve</button>
+		  &nbsp;
+			 <button (click) = "updateCreditCardStatus('Reject');"   type="button" class="btn btn-danger">Reject</button>
+			</div>
+		 
+
    	 </form>
    	 <hr/>
    	</section>

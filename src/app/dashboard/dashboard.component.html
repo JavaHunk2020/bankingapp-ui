@@ -55,10 +55,11 @@
               style="height:50px;">
           </a>  
           
-          <a *ngIf="signup.creditCardFlag==='yes'"  href="#" style="display: inline;">
-            <span style="font-weight: bold;display: inline;"> 
+          <a (click)="creditCardDetails(signup)" *ngIf="signup.creditCardFlag==='yes'"  style="display: inline;">
+            <span  style="font-weight: bold;display: inline;"> 
                 {{signup.cardStatus}}       
-              <img src="assets/pending.png" >
+              <img src="assets/pending.png" style="margin-bottom: 2px;">
+              <button [hidden]="signup.cardStatus!=='Approve'"  type="button" class="btn btn-primary">GEN CARD</button>
             </span>
           </a>
 

@@ -12,8 +12,8 @@ const routes: Routes = [
    {path:'dashboard',component:DashboardComponent},
    {path:'signup',component:SignupComponent},
    {path:'addPassport',component:AddPassportComponent},
-   {path:'applyCreditCard',component:CreditComponent}
-    
+   {path:'applyCreditCard',component:CreditComponent},
+   {path:'approveRejectCreditCard/:vemail',component:CreditComponent}
   ];
 
 @NgModule({

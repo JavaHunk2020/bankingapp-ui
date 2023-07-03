@@ -6,7 +6,7 @@ export interface CreditCard {
 	  type:string;
 	  cardName:string;
 	  nameOnCard:string;
-	  limit:string;
+	  climit:string;
 	  status:string;
 	  applicationId:string;
 }

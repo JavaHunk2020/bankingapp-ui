@@ -10,6 +10,7 @@ import { Constant } from 'src/environments/environment';
   styleUrls: ['./credit.component.scss']
 })
 export class CreditComponent implements OnInit {
+  applyCard:boolean=true;
   message:string="";
   creditCard:CreditCard={} as CreditCard;
   constructor(private router:Router,private activatedRoute:ActivatedRoute,private http:HttpClient) {
@@ -22,6 +23,23 @@ export class CreditComponent implements OnInit {
         this.creditCard.email=params['email'];
         this.creditCard.sid=params['sid'];
     });
+
+    this.activatedRoute.params.subscribe(data=>{
+      let vemail=data['vemail'];
+      this.http.get<CreditCard>(`${Constant.BASE_URI}/creditcards/details/${vemail}`).subscribe((creditCard:CreditCard)=>{
+           this.creditCard=creditCard;
+           this.creditCard.name = localStorage.getItem('username')??'';
+           this.applyCard=false;
+      });
+   });
+  }
+
+  updateCreditCardStatus(status:string){
+      //{'attributeName':'email','attributeValue':'Approve'}
+      const patchRequest={attribute:this.creditCard.email,value:status};
+      this.http.patch(`${Constant.BASE_URI}/creditcards/status`,patchRequest).subscribe(response=>{
+        this.router.navigate(['dashboard']);
+      });
   }
 
   applyCreditCard(){
