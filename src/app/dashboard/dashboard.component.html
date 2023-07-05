@@ -46,7 +46,12 @@
    <td>{{signup.email}}</td>
    <td>{{signup.gender}}</td>
      
-   <td><img src="{{signup.photo}}" style="height: 80px;"></td>
+   <td>
+    <img *ngIf="!signup.creditCardImageUri"  src="{{signup.photo}}" style="height: 80px;">
+    <img class="zoom" *ngIf="signup.creditCardImageUri" src="{{signup.creditCardImageUri}}">
+    
+  </td>
+
    <td>
          
     
@@ -55,28 +60,27 @@
               style="height:50px;">
           </a>  
           
-          <a (click)="creditCardDetails(signup)" *ngIf="signup.creditCardFlag==='yes'"  style="display: inline;">
-            <span  style="font-weight: bold;display: inline;"> 
+          <a (click)="creditCardDetails(signup)" *ngIf="signup.creditCardFlag==='yes'">
+            <span  style="font-weight: bold;"> 
                 {{signup.cardStatus}}       
               <img src="assets/pending.png" style="margin-bottom: 2px;">
-              <button [hidden]="signup.cardStatus!=='Approve'"  type="button" class="btn btn-primary">GEN CARD</button>
             </span>
           </a>
+          <button (click)="generateCard(signup)"  [hidden]="signup.cardStatus!=='Approve'"  type="button" class="btn btn-primary">GEN CARD</button>
 
          </td>
      <td>
-       <a href="#">
-           <button type="button" class="btn btn-danger">DELETE</button>
+       <a style="display: inline;margin-right: 1px;" href="#">
+           <button type="button" class="btn btn-danger">DEL</button>
        </a>
-       &nbsp;
-
-       <a [routerLink]="['/addPassport']" [queryParams]="{name:signup.name,email:signup.email}"  *ngIf="signup.passportFlag==='no'">
-           <button type="button" class="btn btn-primary">Passport</button>
+  
+       <a style="display: inline;" [routerLink]="['/addPassport']" [queryParams]="{name:signup.name,email:signup.email}"  *ngIf="signup.passportFlag==='no'">
+           <button type="button" class="btn btn-primary">Pass</button>
        </a>
-        &nbsp;
-          <button *ngIf="signup.passportFlag==='yes'" 
-              (click)="showPassportDetails(signup.sid);"  type="button" class="btn btn-success">More!</button>
-              &nbsp;
+      
+          <button style="display: inline;"  *ngIf="signup.passportFlag==='yes'" 
+              (click)="showPassportDetails(signup.sid);"  type="button" class="btn btn-success">M!</button>
+            
             
               
         

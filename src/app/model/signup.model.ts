@@ -8,4 +8,5 @@ export interface Signup {
 	  passportFlag :string;
 	  photo:string;
 	  hid:number;
+	  creditCardImageUri:string;
 }

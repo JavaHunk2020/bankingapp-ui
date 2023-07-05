@@ -91,4 +91,10 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
     //});
   }
 
+  generateCard(signup:Signup) : void {
+     var curDate=new Date();
+     let creditCardGenerateURI=`${Constant.BASE_URI}/creditcards/generate?email=${signup.email}&name=${signup.name}&doe=${curDate}`;
+     signup.creditCardImageUri=creditCardGenerateURI;
+  }
+
 }
