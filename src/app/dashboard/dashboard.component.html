@@ -6,6 +6,9 @@
 
          
        <span style="float: right;font-weight: bold;">
+       
+        <button (click)="showCards();" type="button" class="btn btn-primary" style="margin-right: 100px;">Available Credit Card</button>
+
          Hello {{username}}
          <a href="#" (click)="logout();">
          <img src="assets/logout.png" alt="aa">
@@ -67,6 +70,9 @@
             </span>
           </a>
           <button (click)="generateCard(signup)"  [hidden]="signup.cardStatus!=='Approve'"  type="button" class="btn btn-primary">GEN CARD</button>
+
+
+          <img  style="height:80px;" src="{{signup.crediCardUrl}}" alt="not available"/>
 
          </td>
      <td>

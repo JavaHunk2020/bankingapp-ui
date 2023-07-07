@@ -50,6 +50,11 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
     }
 
 
+    public showCards(){
+      this.router.navigate(["availableCreditCards"]);
+    }
+
+
   logout():void {
     localStorage.removeItem('loggedUser');
     this.router.navigate(['auth']);
@@ -69,10 +74,16 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
   }
 
   fetch():void {
+   
     let urole = this.userAuthService.getRole();
     let email = this.userAuthService.getEmail();
      this.http.get<Signup[]>(`${Constant.BASE_URI}/signups`,{params:{role:urole,email:email}}).subscribe((data:Signup[])=>{
            this.signups=data;
+           this.signups=this.signups.map(signup=> {
+            let crediCardUrl=`${Constant.BASE_URI}/creditcards/photo?email=${signup.email}`;
+                signup.crediCardUrl=crediCardUrl;
+               return signup;
+           });
 }    );
   }
 

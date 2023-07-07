@@ -13,6 +13,7 @@ import { AddPassportComponent } from './add-passport/add-passport.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { CreditComponent } from './credit/credit.component';
+import { AvailableCardsComponent } from './available-cards/available-cards.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CreditComponent } from './credit/credit.component';
     SignupComponent,
     PassportComponent,
     AddPassportComponent,
-    CreditComponent
+    CreditComponent,
+    AvailableCardsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,4 +9,5 @@ export interface Signup {
 	  photo:string;
 	  hid:number;
 	  creditCardImageUri:string;
+	  crediCardUrl:string;
 }

@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { AddPassportComponent } from './add-passport/add-passport.component';
 import { CreditComponent } from './credit/credit.component';
+import { AvailableCardsComponent } from './available-cards/available-cards.component';
 
 const routes: Routes = [
    {path:'',component:AuthComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
    {path:'signup',component:SignupComponent},
    {path:'addPassport',component:AddPassportComponent},
    {path:'applyCreditCard',component:CreditComponent},
-   {path:'approveRejectCreditCard/:vemail',component:CreditComponent}
+   {path:'approveRejectCreditCard/:vemail',component:CreditComponent},
+   {path:'availableCreditCards',component:AvailableCardsComponent}
   ];
 
 @NgModule({
