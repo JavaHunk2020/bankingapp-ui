@@ -20,11 +20,12 @@
       <h3 #header style="background-color: #ffffe2;">Available Credit Cards!</h3>
       <hr/>
       
-      <div class="card" style="width: 100%;">
+      <ng-container *ngIf="showData">
+      <div  class="card" style="width: 100%;" *ngFor="let crediCardType of data">
         <div style="width: 50%; float: right; display: inline;">
             <img class="card-img-top"
-                src="https://cardinsider.com/wp-content/uploads/2023/05/slider.png-1.webp"
-                alt="Card image" style="width: 250px; margin-top: 10px;">
+                src="{{crediCardType.image}}"
+                alt="Card image" style="width: 250px; margin-top: 10px;margin-left: 10px;">
                     <img class="card-img-top"
                 src="https://cardinsider.com/wp-content/uploads/2023/05/slider.png-1.webp"
                 alt="Card image" style="width: 250px; margin-top: 10px;">
@@ -39,15 +40,16 @@
                 alt="Card image"  style="width :60px;">
                 Benefits </b>:
             <ul>
-                <li>Nagendra Kumar Yadav</li>
-                <li>Nagendra Kumar Yadav</li>
-                <li>Nagendra Kumar Yadav</li>
-                <li>Nagendra Kumar Yadav</li>
+                <li>{{crediCardType.benefit1}}</li>
+                <li>{{crediCardType.benefit2}}</li>
+                <li>{{crediCardType.benefit3}}</li>
+                <li>{{crediCardType.benefit4}}</li>
+                
             </ul>
         </div>
 
         <div class="card-body">
-            <h4 class="card-title">Card Name : Sapphiro Credit Card</h4>
+            <h4 class="card-title">Card Name : {{crediCardType.name}}</h4>
             <p class="card-text">
             <table class="table table-bordered">
                 <thead>
@@ -60,10 +62,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>NA</td>
+                        <td>{{crediCardType.ccode}}</td>
+                        <td>{{crediCardType.annualFee}}</td>
+                        <td>{{crediCardType.joinFee}}</td>
+                        <td>100$</td>
                     </tr>
                 </tbody>
             </table>
@@ -74,5 +76,5 @@
         
 		
     </div>
-    
+</ng-container>
 </section>
