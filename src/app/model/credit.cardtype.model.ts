@@ -2,6 +2,7 @@ export interface CrediCardType {
     id:number;
 	name:string;
 	ccode:string;
+	type:string;
 	benefit1:string;
 	benefit2:string;
 	benefit3:string;

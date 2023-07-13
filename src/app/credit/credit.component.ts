@@ -17,21 +17,24 @@ export class CreditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //Reading data from query parameter 
+    //Reading data from query parameter ???
     this.activatedRoute.queryParams.subscribe(params=>{
         this.creditCard.name=params['name'];
         this.creditCard.email=params['email'];
+        this.creditCard.cardName=params['cname'];
+        this.creditCard.type=params['ctype'];
         this.creditCard.sid=params['sid'];
     });
 
-    this.activatedRoute.params.subscribe(data=>{
-      let vemail=data['vemail'];
-      this.http.get<CreditCard>(`${Constant.BASE_URI}/creditcards/details/${vemail}`).subscribe((creditCard:CreditCard)=>{
-           this.creditCard=creditCard;
-           this.creditCard.name = localStorage.getItem('username')??'';
-           this.applyCard=false;
-      });
-   });
+    //2202/s-202
+    // this.activatedRoute.params.subscribe(data=>{
+    //   let vemail=data['vemail'];
+    //   this.http.get<CreditCard>(`${Constant.BASE_URI}/creditcards/details/${vemail}`).subscribe((creditCard:CreditCard)=>{
+    //        this.creditCard=creditCard;
+    //        this.creditCard.name = localStorage.getItem('username')??'';
+    //        this.applyCard=false;
+    //   });
+    //  });
   }
 
   updateCreditCardStatus(status:string){

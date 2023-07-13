@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Constant } from 'src/environments/environment';
 import { CrediCardType } from '../model/credit.cardtype.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-available-cards',
@@ -10,11 +11,13 @@ import { CrediCardType } from '../model/credit.cardtype.model';
 })
 export class AvailableCardsComponent implements OnInit {
 
+
+
   data:CrediCardType[]={} as Array<CrediCardType>;
 
    showData:boolean = false;
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private router:Router,private httpClient : HttpClient) { }
 
   ngOnInit(): void {
     this.httpClient.get<CrediCardType[]>(`${Constant.BASE_URI}/creditcards/available`).subscribe((data:CrediCardType[])=>{
@@ -28,4 +31,15 @@ export class AvailableCardsComponent implements OnInit {
     });
   }
 
+  applyCreditCard(crediCardType: CrediCardType) {
+    // this.creditCard.name=params['name'];
+    // this.creditCard.email=params['email'];
+    // this.creditCard.sid=params['sid'];
+    let loggedUser=localStorage.getItem('loggedUser');
+    if(loggedUser){
+      let userDetails = JSON.parse(loggedUser);
+      this.router.navigate(['applyCreditCard'],{"queryParams":{name:userDetails.name,cid:userDetails.cid,email:userDetails.email,cname:crediCardType.name,ctype:crediCardType.type}});     
+    }
+    
+  }
 }
