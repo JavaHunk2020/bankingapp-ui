@@ -70,7 +70,8 @@
                 </tbody>
             </table>
             <span style="float: right;">
-            <button (click)="applyCreditCard(crediCardType);"   type="button" class="btn btn-success">Apply Now!</button>
+            <button *ngIf="crediCardType.alreadyApplied==='no'"  (click)="applyCreditCard(crediCardType);"   type="button" class="btn btn-success">Apply Now!</button>
+            <button  *ngIf="crediCardType.alreadyApplied==='Yes'"  type="button" class="btn btn-warning">Card Status : <b>{{crediCardType.status}}</b></button>
         </span>
         </div>
         

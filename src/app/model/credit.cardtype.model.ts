@@ -9,6 +9,8 @@ export interface CrediCardType {
 	benefit4:string;
 	joinFee:string;
 	annualFee:string;
+	alreadyApplied:string;
+	status:string;
 	doe:Date;
 	dom:Date;
     image:string;

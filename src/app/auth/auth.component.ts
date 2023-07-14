@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -17,11 +17,12 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sharedService.getData().subscribe(data=>{
-        if(data==='down'){
-           this.message="It seems like server rest api is down!!!!!!!!!!"; 
-        }
-    });
+ 
+    //this.sharedService.getData().subscribe(data=>{
+        //if(data==='down'){
+         //  this.message="It seems like server rest api is down!!!!!!!!!!"; 
+        //}
+   // });
   }
 
   processLogin(username: HTMLInputElement,password: HTMLInputElement) {

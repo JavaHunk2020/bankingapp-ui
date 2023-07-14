@@ -23,7 +23,7 @@ export class CreditComponent implements OnInit {
         this.creditCard.email=params['email'];
         this.creditCard.cardName=params['cname'];
         this.creditCard.type=params['ctype'];
-        this.creditCard.sid=params['sid'];
+        this.creditCard.sid=params['cid'];
     });
 
     //2202/s-202

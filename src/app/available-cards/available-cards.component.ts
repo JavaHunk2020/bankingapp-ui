@@ -20,7 +20,10 @@ export class AvailableCardsComponent implements OnInit {
   constructor(private router:Router,private httpClient : HttpClient) { }
 
   ngOnInit(): void {
-    this.httpClient.get<CrediCardType[]>(`${Constant.BASE_URI}/creditcards/available`).subscribe((data:CrediCardType[])=>{
+    let loggedUser=localStorage.getItem('loggedUser');
+    if(loggedUser){
+      let userDetails = JSON.parse(loggedUser);
+      this.httpClient.get<CrediCardType[]>(`${Constant.BASE_URI}/creditcards/available/${userDetails.cid}`).subscribe((data:CrediCardType[])=>{
         console.log(data)
         this.data = data;
         this.data=this.data.map(s=>{
@@ -29,6 +32,8 @@ export class AvailableCardsComponent implements OnInit {
         })
         this.showData=true;
     });
+    }  
+   
   }
 
   applyCreditCard(crediCardType: CrediCardType) {
