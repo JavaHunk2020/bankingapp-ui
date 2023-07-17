@@ -35,7 +35,6 @@
       <th>Sno</th>
      <th>Name</th>
      <th>Email</th>
-     <th>Gender</th>
      <th>Photo</th>
      <th>Card</th>
        <th>Action</th>
@@ -46,9 +45,7 @@
    <tr *ngFor="let signup of signups;index as sno">
    <td>{{sno+1}}</td>
    <td>{{signup.name}}</td>
-   <td>{{signup.email}}</td>
-   <td>{{signup.gender}}</td>
-     
+     <td>{{signup.email}}</td>
    <td>
     <img *ngIf="!signup.creditCardImageUri"  src="{{signup.photo}}" style="height: 80px;">
     <img class="zoom" *ngIf="signup.creditCardImageUri" src="{{signup.creditCardImageUri}}">
@@ -69,10 +66,11 @@
               <img src="assets/pending.png" style="margin-bottom: 2px;">
             </span>
           </a>
-          <button (click)="generateCard(signup)"  [hidden]="signup.cardStatus!=='Approve'"  type="button" class="btn btn-primary">GEN CARD</button>
+          <br/>
+          <button (click)="generateCard(signup)"  *ngIf="signup.cardStatus==='Approve'"  
+          type="button" class="btn btn-primary">GEN CARD</button>
 
-
-          <img  style="height:80px;" src="{{signup.crediCardUrl}}" alt="not available"/>
+         
 
          </td>
      <td>

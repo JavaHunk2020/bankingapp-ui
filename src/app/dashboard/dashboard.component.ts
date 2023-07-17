@@ -96,8 +96,8 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
   }
 
   public creditCardDetails(signup:Signup): void {
-    localStorage.setItem('username',signup.name);
-      this.router.navigate(['approveRejectCreditCard',signup.email]);
+      localStorage.setItem('username',signup.name);
+      this.router.navigate(['approveRejectCreditCard',signup.applicationId]);
      
     //});
   }

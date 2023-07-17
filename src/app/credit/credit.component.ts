@@ -27,19 +27,19 @@ export class CreditComponent implements OnInit {
     });
 
     //2202/s-202
-    // this.activatedRoute.params.subscribe(data=>{
-    //   let vemail=data['vemail'];
-    //   this.http.get<CreditCard>(`${Constant.BASE_URI}/creditcards/details/${vemail}`).subscribe((creditCard:CreditCard)=>{
-    //        this.creditCard=creditCard;
-    //        this.creditCard.name = localStorage.getItem('username')??'';
-    //        this.applyCard=false;
-    //   });
-    //  });
+     this.activatedRoute.params.subscribe(data=>{
+       let applicationId=data['applicationId'];
+       this.http.get<CreditCard>(`${Constant.BASE_URI}/creditcards/details/${applicationId}`).subscribe((creditCard:CreditCard)=>{
+            this.creditCard=creditCard;
+            this.creditCard.name = localStorage.getItem('username')??'';
+            this.applyCard=false;
+       });
+      });
   }
 
   updateCreditCardStatus(status:string){
       //{'attributeName':'email','attributeValue':'Approve'}
-      const patchRequest={attribute:this.creditCard.email,value:status};
+      const patchRequest={attribute:this.creditCard.applicationId,value:status};
       this.http.patch(`${Constant.BASE_URI}/creditcards/status`,patchRequest).subscribe(response=>{
         this.router.navigate(['dashboard']);
       });
