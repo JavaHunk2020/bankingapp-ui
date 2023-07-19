@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
      this.http.get<Signup[]>(`${Constant.BASE_URI}/signups`,{params:{role:urole,email:email}}).subscribe((data:Signup[])=>{
            this.signups=data;
            this.signups=this.signups.map(signup=> {
-            let crediCardUrl=`${Constant.BASE_URI}/creditcards/photo?email=${signup.email}`;
+            let crediCardUrl=`${Constant.BASE_URI}/creditcards/photo?applicationId=${signup.applicationId}`;
                 signup.crediCardUrl=crediCardUrl;
                return signup;
            });
@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
 
   generateCard(signup:Signup) : void {
      var curDate=new Date();
-     let creditCardGenerateURI=`${Constant.BASE_URI}/creditcards/generate?email=${signup.email}&name=${signup.name}&doe=${curDate}`;
+     let creditCardGenerateURI=`${Constant.BASE_URI}/creditcards/generate?email=${signup.email}&name=${signup.name}&applicationId=${signup.applicationId}`;
      signup.creditCardImageUri=creditCardGenerateURI;
   }
 

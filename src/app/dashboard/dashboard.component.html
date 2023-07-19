@@ -47,7 +47,9 @@
    <td>{{signup.name}}</td>
      <td>{{signup.email}}</td>
    <td>
-    <img *ngIf="!signup.creditCardImageUri"  src="{{signup.photo}}" style="height: 80px;">
+    
+    
+    <img class="zoom" *ngIf="signup.crediCardUrl" src="{{signup.crediCardUrl}}">
     <img class="zoom" *ngIf="signup.creditCardImageUri" src="{{signup.creditCardImageUri}}">
     
   </td>
@@ -60,9 +62,9 @@
               style="height:50px;">
           </a>  
           
-          <a (click)="creditCardDetails(signup)" *ngIf="signup.creditCardFlag==='yes'">
+          <b>{{signup.cardStatus}}  </b>
+          <a (click)="creditCardDetails(signup);signup.cardStatus='Card Generated'" *ngIf="signup.creditCardFlag==='yes' && (signup.cardStatus!=='Approve' && signup.cardStatus!=='Card Generated')">
             <span  style="font-weight: bold;"> 
-                {{signup.cardStatus}}       
               <img src="assets/pending.png" style="margin-bottom: 2px;">
             </span>
           </a>
