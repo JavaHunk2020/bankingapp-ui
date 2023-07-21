@@ -12,25 +12,21 @@ import { SharedService } from './shared.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private sharedService:SharedService) {}
+  constructor(private sharedService:SharedService) {
+
+  }
+
+  
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
    
-    if(request.url.includes('aws.ctrlmap.com')){
-      return next.handle(request);
-    }
-   
-    // let clonedRequest = request.clone({
-    //   setHeaders: {
-    //     'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFuLmJhbnNhbCsxMDBAY29udHJvbG1hcC5pbyIsInNjb3BlcyI6W3siYXV0aG9yaXR5IjoiY3RybG1hcCJ9XSwic3Vic2NyaXB0aW9uU3RhdHVzIjp0cnVlLCJ0ZW5hbnQiOiJjYW1yeSIsImF1dGhUeXBlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vd3d3LmN0cmxtYXAuY29tIiwiaWF0IjoxNjg5MzU3NjQ3LCJleHAiOjE2ODk0NDQwNDd9.GTF92Cpo0BsFKO3x3hSge1qOKFKTahu8wyhl4lj0mewByVNfanky168ipfLvFUz84p_Rea8km1oAt1IDqxbo9w',
-    //     'X-TenantURI': 'camry',
-    //     'X-AuthProvider': 'cmapjwt',
-    //   },
-    // });
+     let clonedRequest = request.clone({
+       setHeaders: {
+         Authorization: 'Bearer '+ localStorage.getItem("Authorization")
+       },
+     });
 
-
-
-    return next.handle(request).pipe(
+    return next.handle(clonedRequest).pipe(
       tap(
         () => {
           // to fix solar error

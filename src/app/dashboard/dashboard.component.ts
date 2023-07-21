@@ -77,7 +77,9 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
    
     let urole = this.userAuthService.getRole();
     let email = this.userAuthService.getEmail();
-     this.http.get<Signup[]>(`${Constant.BASE_URI}/signups`,{params:{role:urole,email:email}}).subscribe((data:Signup[])=>{
+    //API IS NOT PUBLIC
+    //YOU NEED TOKEN ->YOU HAVE TO SEND IT INSIDE HEADER - AUTHORIZATION
+    this.http.get<Signup[]>(`${Constant.BASE_URI}/signups`,{params:{role:urole,email:email}}).subscribe((data:Signup[])=>{
            this.signups=data;
            this.signups=this.signups.map(signup=> {
             let crediCardUrl=`${Constant.BASE_URI}/creditcards/photo?applicationId=${signup.applicationId}`;

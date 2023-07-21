@@ -4,6 +4,7 @@ import { Passport } from '../model/passport.model';
 import { HttpClient } from '@angular/common/http';
 import { Constant } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { NgClass } from '@angular/common';
 
 interface Magic {
   name:string;
@@ -51,3 +52,6 @@ export class AddPassportComponent implements OnInit {
   }
 
 }
+
+
+
