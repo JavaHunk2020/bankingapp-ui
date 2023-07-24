@@ -82,8 +82,10 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
     this.http.get<Signup[]>(`${Constant.BASE_URI}/signups`,{params:{role:urole,email:email}}).subscribe((data:Signup[])=>{
            this.signups=data;
            this.signups=this.signups.map(signup=> {
-            let crediCardUrl=`${Constant.BASE_URI}/creditcards/photo?applicationId=${signup.applicationId}`;
-                signup.crediCardUrl=crediCardUrl;
+                let crediCardUrl=`${Constant.BASE_URI}/creditcards/cphoto?applicationId=${signup.applicationId}`;
+                this.http.get<any>(crediCardUrl).subscribe(imageData=>{
+                  signup.crediCardUrl = 'data:image/png;base64,' + imageData.photo;
+                });
                return signup;
            });
 }    );

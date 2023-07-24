@@ -9,10 +9,11 @@ import {
 import { Observable } from 'rxjs';
 import { mergeMap, tap } from 'rxjs/operators';
 import { SharedService } from './shared.service';
+import { Router } from '@angular/router';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private sharedService:SharedService) {
+  constructor(private sharedService:SharedService,private router:Router) {
 
   }
 
@@ -42,7 +43,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (err instanceof HttpErrorResponse) {
       if (err.status === 401) {
-        
+        this.sharedService.publish("Username and password are not correct.");
+        this.router.navigate(['auth']);
         return;
       }
       if (err.status === 403) {

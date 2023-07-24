@@ -26,12 +26,9 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
- 
-    //this.sharedService.getData().subscribe(data=>{
-        //if(data==='down'){
-         //  this.message="It seems like server rest api is down!!!!!!!!!!"; 
-        //}
-   // });
+    this.sharedService.getData().subscribe(data=>{
+        this.message=data;
+    });
   }
 
   processLogin(username: HTMLInputElement,password: HTMLInputElement) {
