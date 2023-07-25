@@ -60,6 +60,10 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
     this.router.navigate(['auth']);
   }
 
+  public  openModal(email:string,name:string) : void {
+    this.router.navigate(['cardModal',email,name]);
+  }
+
   ngOnInit(): void {
     console.log("ng oninit method is called");
     //null coalescing

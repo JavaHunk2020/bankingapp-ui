@@ -14,6 +14,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { CreditComponent } from './credit/credit.component';
 import { AvailableCardsComponent } from './available-cards/available-cards.component';
+import { CardModalComponent } from './card-modal/card-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AvailableCardsComponent } from './available-cards/available-cards.compo
     PassportComponent,
     AddPassportComponent,
     CreditComponent,
-    AvailableCardsComponent
+    AvailableCardsComponent,
+    CardModalComponent
   ],
   imports: [
     BrowserModule,

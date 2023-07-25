@@ -35,6 +35,7 @@
       <th>Sno</th>
      <th>Name</th>
      <th>Email</th>
+     <th>Cards</th>
      <th>Photo</th>
      <th>Card</th>
        <th>Action</th>
@@ -46,6 +47,9 @@
    <td>{{sno+1}}</td>
    <td>{{signup.name}}</td>
      <td>{{signup.email}}</td>
+     <td>
+     <button (click)="openModal(signup.email,signup.name);" type="button" class="btn btn-primary">SG</button>
+    </td>
    <td>
     
     

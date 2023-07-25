@@ -1,0 +1,27 @@
+<section class="container">
+    <h1>All Cards Details</h1>
+     <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
+     <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
+     <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
+ 
+      <hr/>
+
+     <table class="table table-bordered">
+        <thead>
+          <tr style="background-color: maroon;color:white;">
+             <th colspan="2">Name : {{name}}</th>
+            <th colspan="2">Email : {{email}}</th>
+          </tr>
+        </thead>
+        <tbody>
+       
+          <tr>
+          <td *ngFor="let imageRow of imageData">
+            <img src="data:image/png;base64,{{imageRow.photo}}" style="height: 200px;">
+
+          </td>
+          
+         </tr>
+         </tbody>   
+</table>
+</section>
