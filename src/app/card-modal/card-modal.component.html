@@ -18,10 +18,39 @@
           <tr>
           <td *ngFor="let imageRow of imageData">
             <img src="data:image/png;base64,{{imageRow.photo}}" style="height: 200px;">
-
+              <hr/>
+             <button (click)="showDetails(imageRow.cardName);" type="button" class="btn btn-primary">More</button>
           </td>
           
          </tr>
          </tbody>   
 </table>
+<table *ngIf="showCardDetail"  class="table table-bordered" style="font-size: 18px;">
+  <tbody>
+      <tr style="background-color: #f0f7fe;">
+         <td colspan="2">Card Name : <b>{{creditCardDetails.name}}</b> &nbsp;&nbsp;&nbsp;&nbsp;  
+          
+          <span style="margin-left: 50px;">Card Type : {{creditCardDetails.type}}</span>
+
+          </td>
+         
+      </tr>
+      <tr>
+        <td>Benefit1</td>
+        <td style="width: 75%;">{{creditCardDetails.benefit1}}</td>
+     </tr>
+     <tr>
+      <td>Benefit1</td>
+      <td style="width: 75%;">{{creditCardDetails.benefit2}}</td>
+   </tr>
+   <tr>
+    <td>Benefit1</td>
+    <td style="width: 75%;">{{creditCardDetails.benefit3}}</td>
+ </tr>
+ <tr>
+  <td>Benefit1</td>
+  <td style="width: 75%;">{{creditCardDetails.benefit4}}</td>
+</tr>
+    </tbody>
+  </table>
 </section>

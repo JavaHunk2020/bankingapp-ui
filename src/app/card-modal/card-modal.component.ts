@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Constant } from 'src/environments/environment';
+import { CrediCardType } from '../model/credit.cardtype.model';
 
 @Component({
   selector: 'app-card-modal',
@@ -12,6 +13,8 @@ export class CardModalComponent implements OnInit {
   imageData:any[]=[];
   name:string='';
   email:string='';
+  showCardDetail:boolean=false;
+  creditCardDetails:CrediCardType={} as CrediCardType;  
   constructor(private activatedRoute:ActivatedRoute,private http:HttpClient) {
 
    }
@@ -26,8 +29,14 @@ export class CardModalComponent implements OnInit {
       });
     });  
     let crediCardUrl=`${Constant.BASE_URI}/creditcards/all`;
+  }
 
-    
+  public showDetails(cardName : string){
+    let crediCardUrl=`${Constant.BASE_URI}/creditcards/cdetails/${cardName}`;
+    this.http.get<CrediCardType>(crediCardUrl).subscribe((cardDetail:CrediCardType)=>{
+      this.creditCardDetails=cardDetail;
+      this.showCardDetail=true;
+    });
   }
 
 }

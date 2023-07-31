@@ -54,7 +54,11 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
       this.router.navigate(["availableCreditCards"]);
     }
 
+    public editProfile(){
+      this.router.navigate(["editProfile"]);
+    }
 
+    
   logout():void {
     localStorage.removeItem('loggedUser');
     this.router.navigate(['auth']);
