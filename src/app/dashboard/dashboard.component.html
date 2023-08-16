@@ -25,7 +25,7 @@
 
      </app-passport>
 
-
+       {{message}} 
       <h3 #header style="background-color: #ffffe2;">Signup Data with Passport!</h3>
       <hr/>
        <b>Total Records</b> :  <span style="font-weight: bold;font-size: 16px;"> 
@@ -55,7 +55,10 @@
     
     
     <img class="zoom" *ngIf="signup.crediCardUrl" src="{{signup.crediCardUrl}}">
+
+   
     <img class="zoom" *ngIf="signup.creditCardImageUri" src="{{signup.creditCardImageUri}}">
+   
     
   </td>
 
@@ -93,7 +96,8 @@
               (click)="showPassportDetails(signup.sid);"  type="button" class="btn btn-success">M!</button>
             
             
-              
+            <button (click)="sendEmail(signup);" type="button" class="btn btn-warning">Email</button>
+            
         
        </td>
    </tr>

@@ -32,6 +32,7 @@ export class CardModalComponent implements OnInit {
   }
 
   public showDetails(cardName : string){
+    //METHOD = GET
     let crediCardUrl=`${Constant.BASE_URI}/creditcards/cdetails/${cardName}`;
     this.http.get<CrediCardType>(crediCardUrl).subscribe((cardDetail:CrediCardType)=>{
       this.creditCardDetails=cardDetail;

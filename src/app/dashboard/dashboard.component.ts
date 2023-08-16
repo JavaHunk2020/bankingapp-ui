@@ -19,6 +19,8 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
    signups:Signup[]=[]; 
    username:string="";
 
+   message:string ="";
+
    passportDetails:Passport={} as Passport;
 
    @ViewChild("header") 
@@ -106,6 +108,14 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
     });
 
   }
+
+  public sendEmail(signup:Signup) : void {
+      const input={sid:signup.sid,email:signup.email,applicationId:signup.applicationId}; 
+      this.http.post<any>(`${Constant.BASE_URI}/creditcards/email`,input).subscribe((data:any)=>{
+            console.log(data);
+            this.message="Email is sent successfully.";
+      });
+    }     
 
   public creditCardDetails(signup:Signup): void {
       localStorage.setItem('username',signup.name);
